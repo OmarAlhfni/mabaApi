@@ -2,9 +2,18 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models/index");
 
-/* GET users listing. */
 router.get("/", async function (req, res, next) {
-  var users = await db.User.findAll();
+  var users = await db.User.findAll({
+    // where: { isAdmin: false },
+    attributes: [
+      "id",
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "isAdmin"
+    ]
+  });
   res.json(users);
 });
 

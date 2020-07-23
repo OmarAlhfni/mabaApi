@@ -1,9 +1,26 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models/index");
-/* GET home page. */
+
+
+
+router.get("/", async function (req, res, next) {
+    try {
+        res.json(await db.Category.findAll({
+            attributes: [
+                "id",
+                "name"
+            ]
+        }));
+
+    } catch (error) {
+        console.log("ther is a error====", error);
+    }
+});
+
+
 router.post("/", async function (req, res, next) {
-    var category = await db.category.create(req.body);
+    var category = await db.Category.create(req.body);
     res.json(category);
 });
 

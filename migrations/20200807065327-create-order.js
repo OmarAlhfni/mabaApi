@@ -26,7 +26,7 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "users",
+          model: "Users",
           key: "id"
         }
       },
@@ -40,7 +40,7 @@ module.exports = {
       cityId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "cities",
+          model: "Cities",
           key: "id"
         }
       },
